@@ -1,0 +1,7 @@
+.databricks/
+.venv/
+__pycache__/
+*.pyc
+.env
+.databrickscfg
+*.token
