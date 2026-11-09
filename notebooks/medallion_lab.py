@@ -101,7 +101,7 @@ def start_bronze():
 
 # DBTITLE 1,3. Silver: дедупликация + поздние данные через MERGE по event_id
 def upsert_silver(batch_df, batch_id):
-    # 1) дубли внутри микробатча: оставляем первую по времени поступления
+    # 1) дубли внутри микробатча: оставляем первую по времени поступления.
     w = Window.partitionBy("event_id").orderBy(F.col("_ingest_ts").asc())
     clean = (batch_df.filter("event_id IS NOT NULL AND event_ts IS NOT NULL")
              .withColumn("rn", F.row_number().over(w)).filter("rn = 1")
