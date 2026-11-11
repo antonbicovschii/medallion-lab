@@ -10,6 +10,8 @@
 # DBTITLE 1,0. Настройки и объекты
 import json, uuid, random, time, os
 from datetime import datetime, timedelta, timezone
+
+import spark
 from delta.tables import DeltaTable
 from pyspark.sql import functions as F, Window
 
